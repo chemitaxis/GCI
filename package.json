@@ -27,7 +27,8 @@
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
-    "pbkdf2-sha256": "^1.1.1"
+    "pbkdf2-sha256": "^1.1.1",
+    "q": "^1.4.1"
   },
   "devDependencies": {},
   "engines": {

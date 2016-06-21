@@ -12,6 +12,7 @@ var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+
 // Load environment variables from .env file
 dotenv.load();
 
