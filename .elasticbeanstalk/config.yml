@@ -1,8 +1,0 @@
-branch-defaults:
-  master:
-    environment: null
-global:
-  application_name: GCI
-  default_platform: Node.js
-  default_region: eu-west-1
-  profile: eb-cli
