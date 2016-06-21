@@ -46,8 +46,8 @@ exports.loginPost = co(function*(req, res, next) {
     req.flash('error', errors);
     return res.redirect('/login');
   }
-mongoose.Promise = global.Promise;
-var email = req.body.email;
+  mongoose.Promise = global.Promise;
+  var email = req.body.email;
 
   var user = yield User.findOne({ Email: email }).exec();
   var identityHash = user.PasswordHash;
@@ -146,9 +146,9 @@ exports.signupPost = function(req, res, next) {
       return res.redirect('/signup');
     }
     user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
+      Name: req.body.name,
+      Email: req.body.email,
+      Password: req.body.password
     });
     user.save(function(err) {
       req.logIn(user, function(err) {
@@ -190,13 +190,13 @@ exports.accountPut = function(req, res, next) {
 
   User.findById(req.user.id, function(err, user) {
     if ('password' in req.body) {
-      user.password = req.body.password;
+      user.Password = req.body.password;
     } else {
-      user.email = req.body.email;
-      user.name = req.body.name;
-      user.gender = req.body.gender;
-      user.location = req.body.location;
-      user.website = req.body.website;
+      user.Email = req.body.email;
+      user.Name = req.body.name;
+      user.Gender = req.body.gender;
+      user.Location = req.body.location;
+      user.Website = req.body.website;
     }
     user.save(function(err) {
       if ('password' in req.body) {
@@ -229,13 +229,13 @@ exports.unlink = function(req, res, next) {
   User.findById(req.user.id, function(err, user) {
     switch (req.params.provider) {
       case 'facebook':
-        user.facebook = undefined;
+        user.Facebook = undefined;
         break;
       case 'google':
-        user.google = undefined;
+        user.Google = undefined;
         break;
       case 'twitter':
-        user.twitter = undefined;
+        user.Twitter = undefined;
         break;
       case 'vk':
         user.vk = undefined;
@@ -286,13 +286,13 @@ exports.forgotPost = function(req, res, next) {
       });
     },
     function(token, done) {
-      User.findOne({ email: req.body.email }, function(err, user) {
+      User.findOne({ Email: req.body.email }, function(err, user) {
         if (!user) {
           req.flash('error', { msg: 'The email address ' + req.body.email + ' is not associated with any account.' });
           return res.redirect('/forgot');
         }
-        user.passwordResetToken = token;
-        user.passwordResetExpires = Date.now() + 3600000; // expire in 1 hour
+        user.PasswordResetToken = token;
+        user.PasswordResetExpires = Date.now() + 3600000; // expire in 1 hour
         user.save(function(err) {
           done(err, token, user);
         });

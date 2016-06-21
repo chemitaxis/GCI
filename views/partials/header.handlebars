@@ -18,15 +18,15 @@
     {{#if user}}
       <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle">
-          {{#if user.picture}}
+          {{#if user.Picture}}
             <img src="{{user.picture}}">
           {{else}}
             <img src="{{user.gravatar}}">
           {{/if}}
-          {{#if user.name}}
-            {{user.name}}
+          {{#if user.Name}}
+            {{user.Name}}
           {{else}}
-            {{user.email}}
+            {{user.Email}}
           {{/if}}
           <i class="caret"></i>
         </a>
